@@ -12,7 +12,7 @@ class RYBapp(tk.Tk):
 
 		self.frames = {}
 
-		for F in (StartPage, PageOne):
+		for F in (StartPage, PageOne, PageTwo):
 			frame = F(container, self)
 
 			self.frames[F] = frame
@@ -37,7 +37,10 @@ class StartPage(tk.Frame):
 
 		button1 = tk.Button(self, text="Page 1", 
 			command=lambda: controller.show_frame(PageOne))
+		button2 = tk.Button(self, text="Page 2", 
+			command=lambda: controller.show_frame(PageTwo))
 		button1.pack()
+		button2.pack()
 
 
 class PageOne(tk.Frame):
@@ -49,8 +52,25 @@ class PageOne(tk.Frame):
 
 		button1 = tk.Button(self, text="Home", 
 			command=lambda: controller.show_frame(StartPage))
+		button2 = tk.Button(self, text="Page 2", 
+			command=lambda: controller.show_frame(PageTwo))
 		button1.pack()
+		button2.pack()
 
+
+class PageTwo(tk.Frame):
+
+	def __init__(self, parent, controller):
+		tk.Frame.__init__(self, parent)
+		label = tk.Label(self, text="I'm on the third page :o")
+		label.pack()
+
+		button1 = tk.Button(self, text="Home", 
+			command=lambda: controller.show_frame(StartPage))
+		button2 = tk.Button(self, text="Page 1", 
+			command=lambda: controller.show_frame(PageOne))
+		button1.pack()
+		button2.pack()
 
 
 app = RYBapp()
